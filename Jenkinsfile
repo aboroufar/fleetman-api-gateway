@@ -14,12 +14,7 @@ pipeline {
    }
 
    stages {
-      
-      stage('Initialize'){
-        def dockerHome = tool 'MyDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-      }
-      
+          
       stage('Preparation') {
          steps {
            
@@ -35,6 +30,8 @@ pipeline {
 
       stage('Build and Push Image') {
          steps {
+           def dockerHome = tool 'MyDocker'
+           env.PATH = "${dockerHome}/bin:${env.PATH}" 
            sh 'docker image build -t ${REPOSITORY_TAG} .'
          }
       }
