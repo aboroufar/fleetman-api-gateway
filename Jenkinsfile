@@ -1,6 +1,6 @@
 pipeline {
    agent any
-   label 'MyDocker'
+   label "MyDocker"
    tools{
      maven "3.6.3"
    }
