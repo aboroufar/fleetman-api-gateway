@@ -2,7 +2,6 @@ pipeline {
    agent any
    tools{
      maven "3.6.3"
-     
    }
    
    environment {
@@ -17,8 +16,7 @@ pipeline {
    stages {
       stage('Preparation') {
          steps {
-            def dockerHome = tool 'MyDocker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
+           
             cleanWs()
             git credentialsId: 'GitHub', url: "https://github.com/${ORGANIZATION_NAME}/${SERVICE_NAME}"
          }
