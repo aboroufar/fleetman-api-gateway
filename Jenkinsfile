@@ -32,7 +32,7 @@ pipeline {
       stage('Build and Push Image') {
          steps {
             
-           sh '/usr/bin/docker/docker image build -t ${REPOSITORY_TAG} .'
+           sh '/usr/bin/docker image build -t ${REPOSITORY_TAG} .'
          }
       }
 
