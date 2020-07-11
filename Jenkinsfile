@@ -31,6 +31,16 @@ pipeline {
            sh 'docker image build -t ${REPOSITORY_TAG} .'
          }
       }
+      
+      stage('Docker Hub Push') {
+         steps {
+           
+            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPsw')]) {
+            sh "docker login -u apesss -p ${dockerHubPwd}"
+            sh "docker push apesss/nodeapp:${dockettag}"
+            }   
+         }
+      }
 
       stage('Deploy to Cluster') {
           steps {
