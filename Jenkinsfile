@@ -44,7 +44,19 @@ pipeline {
 
       stage('Deploy to Cluster') {
           steps {
-                    sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
+             
+             sshagent (['k8s-machine']) { 
+                 sh "scp -o StrictHostKeyChecking=no --- ---- root@52.54.173.163:/home/ubuntu"
+                 script{
+                     try{
+                        sh "ssh root@52.54.173.163 kubectl apply -f ."
+                     }catch(error){
+                        sh "ssh root@52.54.173.163 kubectl apply -f ."
+                      }
+                
+                 }
+            
+             }
           }
       }
    }
