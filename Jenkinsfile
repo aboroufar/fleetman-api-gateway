@@ -1,10 +1,6 @@
 pipeline {
    agent any
    
-   tools{
-     MyMaven "3.6.3"
-   }
-   
    environment {
      // You must set the following environment variables
      // ORGANIZATION_NAME
