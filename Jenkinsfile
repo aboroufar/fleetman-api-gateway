@@ -45,7 +45,8 @@ pipeline {
       stage('Deploy to Cluster') {
           steps {
              
-             sshagent (['k8s-machine']) { 
+             sshagent (['k8s-machine']) {
+                 sh "cat deploy.yaml"
                  sh "scp -o StrictHostKeyChecking=no deploy.yaml root@52.54.173.163:/root"
                  script{
                      try{
