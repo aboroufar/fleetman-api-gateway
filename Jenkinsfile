@@ -46,8 +46,8 @@ pipeline {
           steps {
              
              sshagent (['k8s-machine']) {
-                
-                 sh "sed 's/\${REPOSITORY_TAG}'"/${REPOSITORY_TAG}/g" deploy.yaml"
+                 
+                 sh "sed 's/\${REPOSITORY_TAG}/${REPOSITORY_TAG}/g' deploy.yaml"
                  sh "cat deploy.yaml"
                  sh "scp -o StrictHostKeyChecking=no deploy.yaml root@52.54.173.163:/root"
                  script{
