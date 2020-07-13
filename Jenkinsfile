@@ -51,9 +51,9 @@ pipeline {
                  sh "scp -o StrictHostKeyChecking=no deploy.yaml root@52.54.173.163:/opt/${SERVICE_NAME}/"
                  script{
                      try{
-                        sh "ssh root@52.54.173.163 kubectl apply -f /opt/${SERVICE_NAME}/deploy.yaml"
+                        sh "ssh root@52.54.173.163 kubectl apply -f /opt/kubernetes/${SERVICE_NAME}/deploy.yaml"
                      }catch(error){
-                        sh "ssh root@52.54.173.163 kubectl apply -f /opt/${SERVICE_NAME}/deploy.yaml"
+                        sh "ssh root@52.54.173.163 kubectl apply -f /opt/kubernetes/${SERVICE_NAME}/deploy.yaml"
                       }
                 
                  }
