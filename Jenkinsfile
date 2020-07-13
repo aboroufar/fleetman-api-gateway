@@ -48,7 +48,7 @@ pipeline {
              sshagent (['k8s-machine']) {
                  
                  sh "sed -i 's|\${REPOSITORY_TAG}|${REPOSITORY_TAG}|g' deploy.yaml"
-                 sh "scp -o StrictHostKeyChecking=no deploy.yaml root@52.54.173.163:/opt/${SERVICE_NAME}/"
+                 sh "scp -o StrictHostKeyChecking=no deploy.yaml root@52.54.173.163:/opt/kubernetes/${SERVICE_NAME}/"
                  script{
                      try{
                         sh "ssh root@52.54.173.163 kubectl apply -f /opt/kubernetes/${SERVICE_NAME}/deploy.yaml"
